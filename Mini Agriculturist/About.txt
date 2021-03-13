@@ -1,3 +1,3 @@
 This is a plant doctor based project, build with deep learning models using Python language. 
 One have to run the 'Main_module.py' file. Here is the main class.
-And there is also the project report provided named "__Project Report.pdf". One can easily get the fundamental idea about this project
+And there is also the project report provided named "__Project Report.pdf". One can easily get the fundamental idea about this project.
