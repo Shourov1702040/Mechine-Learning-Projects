@@ -1,0 +1,411 @@
+ScreenManager:
+    LoginScreen:
+    HomeScreen:
+    ProfileScreen:
+    Camera_screen:
+
+<LoginScreen>:
+    name: 'login'
+    Screen:
+        BoxLayout:
+            orientation:'vertical'
+            MDToolbar:
+                title: "Multi-Scanner App"
+                elevation: 36
+                right_action_items : [["dots-vertical"]]
+                left_action_items : [["android"]]
+
+            MDBottomNavigation:
+                MDBottomNavigationItem:
+                    name: 'screen 1'
+                    text: 'Login'
+                    icon: 'login'
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        pos_hint: {'top':0.9}
+                    
+                        MDLabel:
+                            font_style: "H4"
+                            theme_text_color:'Primary'
+                            text: "Login Form"
+                            halign: "center"
+
+                    MDTextFieldRound:
+                        id: user_id
+                        hint_text:"Enter user name"
+                        icon_right:"account"
+                        normal_color: app.theme_cls.bg_dark
+                        pos_hint:{'center_x':0.5, 'center_y':0.7} 
+                        size_hint_x:0.76
+
+                    MDTextFieldRound:
+                        id: password_t
+                        hint_text:"Enter password"
+                        icon_right:"eye-off"
+                        password: True
+                        normal_color: app.theme_cls.bg_dark
+                        pos_hint:{'center_x':0.5, 'center_y':0.55} 
+                        size_hint_x:0.76
+
+                    MDRaisedButton:
+                        text:'Login'
+                        size_hint_x:0.85
+                        font_size:20
+                        font_name: 'D:/Working_dir/Programming/Python/MultiScanner/Fonts/ARLRDBD.TTF'
+                        pos_hint:{'center_x':0.5, 'center_y':0.3}
+                        on_release: 
+                            app.login_fun()
+                            app.set_values_after_login()
+
+                MDBottomNavigationItem:
+                    name: 'screen 2'
+                    text: 'Sign Up'
+                    icon: 'account-plus'
+
+                    FloatLayout:
+                        pos_hint: {'top':1}
+
+                        MDLabel:
+                            text: "Sign up form"
+                            font_style: "H5"
+                            theme_text_color:'Primary'
+                            halign: "center"
+                            pos_hint:{'center_x':0.5,'center_y':0.92}
+
+                        MDLabel:
+                            text: "Name:"
+                            theme_text_color:'Primary'
+                            halign: "center"
+                            pos_hint:{'center_x':0.12,'center_y':0.8}
+
+                        MDTextField:
+                            id: user_name_sign
+                            hint_text:"Enter full name"
+                            pos_hint:{'center_x':0.6, 'center_y':0.8} 
+                            size_hint_x:0.67  
+
+                        MDLabel:
+                            text: "Email:"
+                            theme_text_color:'Primary'
+                            halign: "center"
+                            pos_hint:{'center_x':0.12,'center_y':0.69}
+                        MDTextField:
+                            id: user_email_sign
+                            hint_text:"Enter email address"
+                            pos_hint:{'center_x':0.6, 'center_y':0.69} 
+                            size_hint_x:0.67
+
+                        MDTextField:
+                            id: image_path_sign
+                            normal_color: app.theme_cls.primary_light
+                            readonly: True 
+                            hint_text:'Chosse your image file'
+                            size_hint: 0.58, None
+                            height: "30dp"
+                            pos_hint:{'center_x':0.352,  'center_y':0.58}
+
+                        MDRectangleFlatButton:
+                            text:'Choose'
+                            font_size:14
+                            size_hint_y:0.06
+                            halign: "center"
+                            pos_hint:{'center_x':0.81, 'center_y':0.58}
+                            on_release: app.file_manager_open()
+ 
+
+                        MDLabel:
+                            text: "Enter password (atleast 6 character):"
+                            theme_text_color:'Primary'
+                            halign: "center"
+                            pos_hint:{'center_x':0.47,'center_y':0.45}
+
+                        MDTextField:
+                            id: password_sign
+                            hint_text:"Enter password"
+                            password: True
+                            pos_hint:{'center_x':0.272, 'center_y':0.34} 
+                            size_hint_x:0.43
+                            font_size:13
+
+                        MDTextField:
+                            id: password_cnfm_sign
+                            hint_text:"Confirm password"
+                            password: True
+                            font_size:13
+                            pos_hint:{'center_x':0.73, 'center_y':0.34} 
+                            size_hint_x:0.43
+
+                        MDRaisedButton:
+                            text:'   Submit   '
+                            halign: "center"
+                            font_size:19
+                            pos_hint:{'center_x':0.50, 'center_y':0.12}
+                            on_press: 
+                                app.get_registration_values()        
+
+<HomeScreen>:
+    name: 'home'
+    Screen:
+        MDNavigationLayout:
+            ScreenManager:
+                Screen:
+                    BoxLayout:
+                        orientation:'vertical'
+                        MDToolbar:
+                            id: commontoolbar
+                            title: "Multi-Scanner App"
+                            elevation: 40
+                            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items : [["dots-vertical"]]
+
+                        MDBottomNavigation:
+                            # Image to text ------------>
+                            MDBottomNavigationItem:
+                                name: 'screen 2'
+                                text: 'Image to text'
+                                icon: 'camera-burst'
+                                FloatLayout:
+                                    size_hint: 1,0.98
+                                    pos_hint: {'top':1}
+                                    MDLabel:
+                                        font_style: "H5"
+                                        theme_text_color: "Primary"
+                                        text: "Image to text"
+                                        halign: "center"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.94}
+
+                                    MDLabel:
+                                        text:'C Scan'
+                                        pos_hint: {'center_x':0.60, 'center_y':0.80}
+                                        
+                                    MDIconButton:
+                                        icon: "credit-card-scan"
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.34, 'center_y':0.80}
+                                        on_release: app.open_camera()
+
+                                    MDIconButton:
+                                        icon: "folder-multiple-image"
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.62, 'center_y':0.80}
+                                        on_release: app.file_manager_open2()
+                                    MDLabel:
+                                        id: choose_to_load
+                                        text:'Choose'
+                                        pos_hint: {'center_x':1.2, 'center_y':0.80}
+
+                                    MDRaisedButton:
+                                        text:'Show'
+                                        pos_hint: {'center_x':0.2, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.Show_img()
+                                    MDRaisedButton:
+                                        text:'Clear'
+                                        pos_hint: {'center_x':0.50, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.clear1()
+                                    MDRaisedButton:
+                                        text:'Copy'
+                                        pos_hint: {'center_x':0.8, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.copy_to_clipboard()
+
+                                    MDTextField:
+                                        id: text_extracted
+                                        hint_text: "Text"
+                                        mode: "rectangle"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.32}
+                                        font_size:15
+                                        size_hint_x:0.8
+                                        size_hint_y:0.64
+                                        multiline: True
+
+
+                            # Text to speech---------------->
+                            MDBottomNavigationItem:
+                                name: 'screen 3'
+                                text: 'Text to speech'
+                                icon: 'speaker-wireless'
+                                FloatLayout:
+                                    size_hint: 1,0.98
+                                    pos_hint: {'top':1}
+                                    MDLabel:
+                                        font_style: "H5"
+                                        theme_text_color: "Primary"
+                                        text: "Text to speech"
+                                        halign: "center"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.94}
+
+                                    MDIconButton:
+                                        icon:'D:/Working_dir/Programming/Python/MultiScanner/Fonts/speaker.png'
+                                        halign: 'center'
+                                        pos_hint: {'center_x': 0.5,'center_y':0.8}
+                                        on_release: app.text_to_speech_fun()
+
+                                    MDRaisedButton:
+                                        text:'Paste'
+                                        pos_hint: {'center_x':0.2, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.paste_from_clipboard()
+                                    MDRaisedButton:
+                                        text:'Clear'
+                                        pos_hint: {'center_x':0.50, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.clear2()
+                                    MDRaisedButton:
+                                        text:'Copy'
+                                        pos_hint: {'center_x':0.8, 'center_y':0.69}
+                                        size_hint_y:0.07
+                                        on_release: app.copy_to_clipboard2()
+
+                                    MDTextField:
+                                        id: text_to_speech
+                                        hint_text: "Text"
+                                        mode: "rectangle"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.32}
+                                        font_size:15
+                                        size_hint_x:0.8
+                                        size_hint_y:0.64
+                                        multiline: True
+
+            MDNavigationDrawer:
+                id: nav_drawer
+
+                MDBoxLayout:
+                    orientation:'vertical'
+                    spacing: '8dp'
+                    padding: '0dp'
+
+                    FitImage:
+                        id: user_image
+                        source: ""
+                        size_hint_y: 1.2
+                        pos_hint: {"top": 1}
+
+                    MDLabel:
+                        id: main_name_key
+                        font_style: 'Subtitle1'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        pos_hint:{'center_x':0.56, 'center_y':0.5}
+
+                    MDLabel:
+                        id: username_email
+                        font_style: 'Caption'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        pos_hint:{'center_x':0.56, 'center_y':0.5}
+
+                    ScrollView:
+                        pos_hint : {"center_x": 0.45, 'center_y':0.45}
+                        size_hint_y:1
+                        MDList:
+                            OneLineIconListItem:
+                                text: 'Profile'
+                                on_release: 
+                                    app.go_to_profile()
+                                    nav_drawer.set_state("dismiss")
+                                IconLeftWidget:
+                                    icon:'account-circle-outline'
+                                
+                            OneLineIconListItem:
+                                text: 'Log out'
+                                on_release: 
+                                    app.logout_fun()
+                                    nav_drawer.set_state("dismiss")
+                                    
+                                IconLeftWidget:
+                                    icon:'logout'
+                            OneLineIconListItem:
+                                text: 'Exit'
+                                on_release: 
+                                    app.stop()
+                                    nav_drawer.set_state("dismiss")
+                                IconLeftWidget:
+                                    icon:'location-exit'
+
+<ProfileScreen>:
+    name: 'profile'
+    MDScreen:
+        FloatLayout:
+            MDToolbar:
+                title:"Profile"
+                pos_hint: {'top': 1}
+                left_action_items: [['arrow-left', lambda x: app.go_to_home()]]
+                right_action_items : [["dots-vertical"]]
+
+            FitImage:
+                id: profile_img
+                source: ""
+                size_hint: 0.51,0.296
+                pos_hint: {'center_x':0.5, 'center_y':0.7}
+                radius: [36, 36, 36,36, ]
+
+            MDLabel:
+                id: profile_name
+                font_size:20
+                size_hint_y: None
+                halign:'center'
+                pos_hint:{'center_x':0.5, 'center_y':0.505}
+
+            MDLabel:
+                id: profile_email
+                font_size:17
+                font_name: '/Working_dir/Programming/Python/MultiScanner/Fonts/ARLRDBD.TTF'
+                halign:'center'
+                size_hint_y: None
+                pos_hint:{'center_x':0.5, 'center_y':0.46}  
+
+            MDIconButton:
+                icon:'facebook' 
+                pos_hint:{'center_x':0.2, 'center_y':0.3} 
+            MDLabel:
+                text:"Facebook"
+                halign:'center'
+                pos_hint:{'center_x':0.2, 'center_y':0.25} 
+
+            MDIconButton:
+                icon:'youtube' 
+                pos_hint:{'center_x':0.5, 'center_y':0.3} 
+            MDLabel:
+                text:"Youtube"
+                halign:'center'
+                pos_hint:{'center_x':0.5, 'center_y':0.25} 
+
+            MDIconButton:
+                icon:'linkedin' 
+                pos_hint:{'center_x':0.8, 'center_y':0.3} 
+            MDLabel:
+                text:"Linkedin"
+                halign:'center'
+                pos_hint:{'center_x':0.8, 'center_y':0.25}   
+
+            MDToolbar:
+                title: 'Multi-Scanner'
+                pos_hint: {'bottom': 1}
+                          
+
+<Camera_screen>:
+    name: 'cam_scr'
+    MDScreen:
+        FloatLayout:
+            MDToolbar:
+                title:"Multi-Scanner App Camera"
+                pos_hint: {'top': 1}
+            Image:
+                id:cam_box
+                source:''
+                pos_hint : {"center_x": 0.5, 'center_y':0.5}
+                size_hint:(0.9,1)
+            MDIconButton:
+                pos_hint : {"center_x": 0.5, 'center_y':0.15}
+                icon: "camera"
+                on_release:app.save_image()
+            MDLabel:
+                text:"Capture"
+                halign:'center'
+                pos_hint : {"center_x": 0.5, 'center_y':0.1}
+
