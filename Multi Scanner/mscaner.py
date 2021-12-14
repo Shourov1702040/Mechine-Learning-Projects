@@ -1,3 +1,10 @@
+"""
+Delta electro code
+Md Touhid Islam
+Depertment of CSE, HSTU
+https://www.facebook.com/Shourov40
+"""
+
 import numpy as np
 import pandas as pd
 import cv2, re, string,random,pymysql, pytesseract
