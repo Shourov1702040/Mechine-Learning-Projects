@@ -1,0 +1,1503 @@
+ScreenManager:
+    LoginScreen:
+    HomeScreen:
+    ProfileScreen:
+    ForgotPassScreen:
+    AcctiveACountScreen:
+    Change_password:
+    Settings_screen:
+    User_messenger:
+    Admin_control:
+    ADD_show_diease:
+    Camera_screen:
+
+<LoginScreen>:
+    name: 'login'
+    Screen:
+        BoxLayout:
+            orientation:'vertical'
+            MDToolbar:
+                title: "Mini Agriculturist"
+                elevation: 36
+                left_action_items : [["D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/icon_img2.png", lambda x: app.flip()]]
+                right_action_items : [["rotate-3d-variant", lambda x: app.flip()],["dots-vertical", lambda x: app.stop()]]
+                
+            MDBottomNavigation:
+                MDBottomNavigationItem:
+                    name: 'screen 1'
+                    text: 'Login'
+                    icon: 'login'
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        pos_hint: {'top':0.9}
+                    
+                        MDLabel:
+                            font_style: "H4"
+                            theme_text_color: "Custom"
+                            text_color: 80/256, 45/256, 142/256, 1
+                            text: "Login Form"
+                            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/COASTR.TTF'
+                            halign: "center"
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        spacing: dp(30)
+                        pos_hint: {'top':0.74}
+                        
+
+                        MDTextFieldRound:
+                            id: user_id
+                            hint_text:"Enter user name"
+                            icon_right:"account"
+                            normal_color: app.theme_cls.bg_dark
+                            pos_hint:{'center_x':0.5, 'center_y':0.5} 
+                            font_size:15
+                            size_hint_x:0.7
+                            size_hint_y:0.07
+
+                        MDTextFieldRound:
+                            id: password_t
+                            hint_text:"Enter password"
+                            icon_right:"eye-off"
+                            password: True
+                            normal_color: app.theme_cls.bg_dark
+                            pos_hint:{'center_x':0.5, 'center_y':0.65} 
+                            font_size:15
+                            size_hint_x:0.7
+                            size_hint_y:0.07
+
+                    MDIconButton:
+                        icon:''
+                        halign: 'center'
+                        pos_hint:{'center_x':0.15,'center_y':0.49}
+                        MDCheckbox:
+                            on_active: print("checked as remember")
+                            active : False
+
+                    MDLabel:
+                        font_size:15
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        text: "Remember me"
+                        halign: "center"
+                        pos_hint:{'center_x':0.33, 'center_y':0.49}
+
+                    BoxLayout:
+                        orientation: "vertical"
+                        size_hint_y: None
+                        height: self.minimum_height
+                        spacing: dp(30)
+                        pos_hint: {'top':0.42}
+
+                        MDFillRoundFlatButton:
+                            text:'Login'
+                            size_hint_x:0.8
+                            font_size:20
+                            pos_hint:{'center_x':0.5, 'center_y':0.3}
+                            font_name: 'D:/Working_dir/Programming/Python/MultiScanner/Fonts/ARLRDBD.TTF'
+                            on_release: 
+                                app.login_fun()
+                                app.set_values_after_login()
+                                root.manager.transition.direction = 'left'
+
+                    FloatLayout:
+                        pos_hint: {'top':0.6}
+
+                        MDLabel:
+                            font_size:15
+                            theme_text_color: "Custom"
+                            text_color: 80/256, 45/256, 142/256, 1
+                            text: "Forgot password?"
+                            halign: "center"
+                            pos_hint:{'center_x':0.32, 'center_y':0.5}
+
+                        MDRectangleFlatIconButton:
+                            text:'Recover'
+                            icon:'arrow-right'
+                            font_size:14
+                            size_hint_y:0.05
+                            halign: "center"
+                            pos_hint:{'center_x':0.70, 'center_y':0.5}
+                            on_press: 
+                                app.pass_recover()
+                                root.manager.transition.direction = 'left'
+
+                MDBottomNavigationItem:
+                    name: 'screen 2'
+                    text: 'Sign Up'
+                    icon: 'account-plus'
+                    ScrollView:
+                        size_hint_y:0.95
+                        pos_hint: {"center_x": .5, "center_y": .51}
+                        MDBoxLayout:
+                            orientation:'vertical'
+                            size_hint_y:1.2
+                            spacing:dp(40)
+                            FloatLayout:
+                                pos_hint: {'top':1}
+                                size_hint: 1,1.2
+                                MDLabel:
+                                    font_size:30
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    text: "SIGN UP"
+                                    font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARIBLK.TTF'
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.5, 'center_y':0.96}
+
+                                MDIconButton:
+                                    icon: "account-outline"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.84}
+                                MDTextField:
+                                    id: user_name_sign
+                                    hint_text: "Name"
+                                    mode: "rectangle"
+                                    pos_hint: {'center_x':0.56, 'center_y':0.845}
+                                    size_hint_x:0.73
+                                    size_hint_y:0.1
+                                MDIconButton:
+                                    icon: "email-outline"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.72}
+                                MDTextField:
+                                    id: user_email_sign
+                                    hint_text: "Email"
+                                    mode: "rectangle"
+                                    pos_hint: {'center_x':0.56, 'center_y':0.725}
+                                    size_hint_x:0.73
+                                    size_hint_y:0.1
+                                MDIconButton:
+                                    icon: "cake-variant"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.60}
+                                MDTextField:
+                                    id:date_sign
+                                    hint_text: "Date of birth"
+                                    # text: "Date of birth"
+                                    mode: "rectangle"
+                                    pos_hint: {'center_x':0.56, 'center_y':0.605}
+                                    size_hint_x:0.73
+                                    size_hint_y:0.1
+                                    icon_right: 'calendar'
+                                    on_touch_down: 
+                                        if self.collide_point(*args[1].pos): app.show_date_picker() 
+                                MDIconButton:
+                                    icon: "face-recognition"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.48}
+                                MDTextField:
+                                    id: image_path_sign
+                                    hint_text: "Image/path/a.png"
+                                    mode: "rectangle"
+                                    readonly: True
+                                    pos_hint: {'center_x':0.425, 'center_y':0.485}
+                                    size_hint_x:0.465
+                                    size_hint_y:0.1
+                                MDRectangleFlatButton:
+                                    text:'Choose'
+                                    font_size:13
+                                    size_hint_y:0.084
+                                    pos_hint:{'center_x':0.83, 'center_y':0.479}
+                                    on_release: app.file_manager_open()
+
+                                MDIconButton:
+                                    icon: "security"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.36}
+
+                                MDTextField:
+                                    id: password_sign
+                                    hint_text: "Password"
+                                    mode: "rectangle"
+                                    pos_hint: {'center_x':0.56, 'center_y':0.365}
+                                    icon_right: 'eye-off'
+                                    password: True
+                                    size_hint_x:0.73
+                                    size_hint_y:0.1
+                                MDIconButton:
+                                    icon: "security-network"
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    halign: 'center'
+                                    pos_hint: {'center_x':0.08, 'center_y':0.24}
+
+                                MDTextField:
+                                    id: password_cnfm_sign
+                                    hint_text: "Conform password"
+                                    mode: "rectangle"
+                                    pos_hint: {'center_x':0.56, 'center_y':0.245}
+                                    icon_right: 'eye-off'
+                                    password: True
+                                    size_hint_x:0.73
+                                    size_hint_y:0.1
+                                MDRaisedButton:
+                                    text:'   Submit   '
+                                    halign: "center"
+                                    font_size:20
+                                    size_hint_x:0.92
+                                    size_hint_y:0.09
+                                    pos_hint:{'center_x':0.504, 'center_y':0.07}
+                                    on_release:
+                                        app.get_registration_values()
+                                        root.manager.transition.direction = 'left'   
+
+
+<HomeScreen>:
+    name: 'home'
+    Screen:
+        MDNavigationLayout:
+            ScreenManager:
+                Screen:
+                    BoxLayout:
+                        orientation:'vertical'
+                        MDToolbar:
+                            id: commontoolbar
+                            title: "Mini Agriculturist"
+                            elevation: 40
+                            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+                            right_action_items : [["magnify"],["dots-vertical", lambda x: app.menu_1.open()]]
+
+                        MDBottomNavigation:
+                            MDBottomNavigationItem:
+                                name: 'screen 1'
+                                text: 'Home'
+                                icon: 'home-outline'
+                                FloatLayout:
+                                    size_hint: 1,0.98
+                                    pos_hint: {'top':1}
+
+                                    Image:
+                                        source: "icons/icon_img.png"
+                                        size_hint:(0.30,0.26)
+                                        pos_hint: {'center_x':0.46, 'center_y':0.87}
+                                        radius: [26, 26, 1,1, ]   
+                                    MDLabel:
+                                        font_size:23
+                                        theme_text_color: "Custom"
+                                        text_color: 80/256, 45/256, 142/256, 1
+                                        text: "Mini Agriculturist"
+                                        font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARIALBD.TTF'
+                                        halign: "center"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.74}
+
+                                    MDLabel:
+                                        font_size:16
+                                        theme_text_color: "Custom"
+                                        text_color: 63/256, 36/256, 113/256, 1
+                                        text: "A minified and friendly plant-doctor"
+                                        font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/Arialnb.ttf'
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.5, 'center_y':0.685}
+
+                                    MDSwiper:
+                                        size_hint:1, 0.5
+                                        pos_hint: {'center_x':0.50, 'center_y':0.27}       
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/1.jpg"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False                
+                                                MDLabel:
+                                                    text: "How to use?"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 80/256, 45/256, 142/256, 1
+                                                    
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/2.png"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False               
+                                                MDLabel:
+                                                    text: "Disease affected?"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 63/256, 36/256, 113/256, 1
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/3.png"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False                
+                                                MDLabel:
+                                                    text: "I have my phone"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 63/256, 36/256, 113/256, 1
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/4.png"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False                
+                                                MDLabel:
+                                                    text: "Upload image"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 63/256, 36/256, 113/256, 1
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/5.png"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False                
+                                                MDLabel:
+                                                    text: "Wondering device"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 63/256, 36/256, 113/256, 1
+                                        MDSwiperItem:
+                                            MDCard:
+                                                orientation:'vertical'
+                                                Image:
+                                                    source: "D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/6.jpg"
+                                                    size_hint_y:.8
+                                                    allow_stretch: True
+                                                    keep_ratio: False                
+                                                MDLabel:
+                                                    text: "Happy farming"
+                                                    font_size: 22
+                                                    size_hint_y: None
+                                                    height: self.texture_size[1]
+                                                    pos_hint: {"center_y": .5}
+                                                    theme_text_color: "Custom"
+                                                    text_color: 63/256, 36/256, 113/256, 1
+
+
+                            MDBottomNavigationItem:
+                                id:features_zx
+                                name: 'screen 2'
+                                text: 'Features'
+                                icon: 'feature-search-outline'
+                                FloatLayout:
+                                    size_hint: 1,0.98
+                                    pos_hint: {'top':1}
+ 
+                                    MDLabel:
+                                        # font_size:18
+                                        # theme_text_color: "Custom"
+                                        # text_color: 80/256, 45/256, 142/256, 1
+                                        # text: "~ Disease identification ~"
+                                        # halign: "center"
+                                        # pos_hint: {'center_x':0.50, 'center_y':0.955}
+
+
+                                    MDRoundFlatButton:
+                                        id: drop_item
+                                        # size_hint_y:0.06
+                                        font_size:15
+                                        pos_hint: {'center_x': 0.18, 'center_y': 0.92}
+                                        text: 'Category'
+                                        on_release: app.menu_3.open()
+
+                                    MDFillRoundFlatButton:
+                                        id: suspect_img_choose_btn
+                                        text: 'Image'
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.49, 'center_y':0.92}
+                                        # size_hint_y:0.061
+                                        font_size:15
+                                        on_release: app.menu_6.open()
+                                    MDRoundFlatButton:
+                                        text: 'Clear'
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.80, 'center_y':0.92}
+                                        # size_hint_y:0.06
+                                        font_size:16
+                                        on_release: app.home_page_clear()
+
+
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Disease name:"
+                                    #     pos_hint: {'center_x':0.55, 'center_y':0.80}
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     id: disease_name
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 200/256, 0, 0, 1
+                                    #     text: "No class disease"
+                                    #     pos_hint: {'center_x':0.86, 'center_y':0.80}
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Probability: "
+                                    #     pos_hint: {'center_x':0.55, 'center_y':0.75}
+                                    # MDLabel:
+                                    #     id:probability
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 20/256, 112/256, 7/256, 1
+                                    #     text: "(00.00%)"
+                                    #     pos_hint: {'center_x':0.86, 'center_y':0.75}
+
+                                    MDLabel:
+                                        font_size:24
+                                        id: disease_name
+                                        theme_text_color: "Custom"
+                                        text_color: 80/256, 45/256, 142/256, 1
+                                        text: "> No operation performed"
+                                        font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/KE01020T.TTF'
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.5, 'center_y':0.82}
+
+                                    MDLabel:
+                                        font_size:24
+                                        id: probability
+                                        theme_text_color: "Custom"
+                                        text_color: 20/256, 112/256, 7/256, 1
+                                        # text: "(89.92%)"
+                                        font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/KE01020T.TTF'
+                                        halign:'center'
+                                        pos_hint: {'center_x':0.5, 'center_y':0.76}
+
+                                    
+
+                                    MDLabel:
+                                        font_size:18
+                                        theme_text_color: "Custom"
+                                        text_color: 63/256, 36/256, 113/256, 1
+                                        text: "- Disease prevention & treatment -"
+                                        halign: "center"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.655}
+
+                                    MDRaisedButton:
+                                        font_size:15
+                                        size_hint_y:0.06
+                                        size_hint_x:0.1
+                                        text: "Treatment"
+                                        pos_hint: {'center_x':0.16, 'center_y':0.57}
+                                        on_release: app.get_treatment()
+                                    MDRaisedButton:
+                                        font_size:15
+                                        size_hint_y:0.06
+                                        size_hint_x:0.1
+                                        text: "More"
+                                        pos_hint: {'center_x':0.50, 'center_y':0.57}
+                                        on_release: app.get_symptom()
+                                    MDRaisedButton:
+                                        # icon: "image"
+                                        font_size:15
+                                        text:'Show'
+                                        size_hint_y:0.06
+                                        size_hint_x:0.1
+                                        pos_hint: {'center_x':0.84, 'center_y':0.57}
+                                        on_release: app.show_selected_img()
+                                    Image:
+                                        source:"D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/text_border.png"
+                                        size_hint:(0.96,1)
+                                        pos_hint: {'center_x':0.5, 'center_y':0.26}
+
+                                    ScrollView:
+                                        pos_hint:{'top':0.46}
+                                        size_hint_y:0.5
+                                        size_hint_x:0.9
+                                        halign: 'center'
+                                        pos_hint: {'center_x':0.5, 'center_y':0.258}
+                                        
+                                        MDLabel:
+                                            spacing:'10dp'
+                                            id:treat_symptom
+                                            size_hint_y: None
+                                            height: self.texture_size[1]
+                                            text_size: self.width, None
+                                            theme_text_color: "Custom"
+                                            text_color: 0,0,0, 1
+                                            font_size:14
+                                            
+                                
+                            MDBottomNavigationItem:
+                                name: 'screen 3'
+                                text: 'Developers'
+                                icon: 'account-supervisor'
+
+                                FloatLayout:
+                                    size_hint: 1,0.98
+                                    pos_hint: {'top':1}
+
+                                    MDLabel:
+                                        font_style: "H6"
+                                        theme_text_color: "Custom"
+                                        text_color: 80/256, 45/256, 142/256, 1
+                                        text: " ~ Developers of this app ~ "
+                                        halign: "center"
+                                        pos_hint: {'center_x':0.5, 'center_y':0.94}
+
+                                    # Fera
+                                    # FitImage:
+                                    #     source: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/User_images/fera2.jpg'
+                                    #     size_hint: 0.31,0.21
+                                    #     pos_hint: {'center_x':0.20, 'center_y':0.76}
+                                    #     radius: [10, 10, 10,10, ]
+
+                                    # MDLabel:
+                                    #     font_size:17
+                                    #     theme_text_color: "Custom"
+                                        
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Farah Sultana Fera"
+                                    #     font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARIALBD.TTF'
+                                    #     pos_hint: {'center_x':0.89, 'center_y':0.84}
+
+                                    # MDLabel:
+                                    #     font_size:13.4
+                                    #     spacing:'15dp'
+                                    #     height: self.texture_size[1]
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Level: 3, Semester: II\nStduent, Department of CSE\nHajee Mommad Danesh Science &\nTechnology University,Dinajpur"
+                                    #     pos_hint: {'center_x':0.89, 'center_y':0.73}
+
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     markup: True
+                                    #     text: "Email address: "
+                                    #     halign:'center'
+                                    #     pos_hint: {'center_x':0.18, 'center_y':0.62}
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     markup: True
+                                    #     text: "[b][i]farahsultanafera10@gmail.com[/i][/b]"
+                                    #     halign:'center'
+                                    #     pos_hint: {'center_x':0.62, 'center_y':0.62}
+
+                                    # # Shourov
+                                    # FitImage:
+                                    #     source: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/User_images/s.jpg'
+                                    #     size_hint: 0.31,0.22
+                                    #     pos_hint: {'center_x':0.20, 'center_y':0.4}
+                                    #     radius: [10, 10, 10,10, ]
+
+                                    # MDLabel:
+                                    #     font_size:17
+                                    #     theme_text_color: "Custom"
+                                        
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Md Touhid Islam"
+                                    #     font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARIALBD.TTF'
+                                    #     pos_hint: {'center_x':0.89, 'center_y':0.47}
+
+                                    # MDLabel:
+                                    #     font_size:13.4
+                                    #     spacing:'15dp'
+                                    #     height: self.texture_size[1]
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     text: "Level: 3, Semester: II\nStduent, Department of CSE\nHajee Mommad Danesh Science &\nTechnology University,Dinajpur"
+                                    #     pos_hint: {'center_x':0.89, 'center_y':0.35}
+
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     markup: True
+                                    #     text: "Email address: "
+                                    #     halign:'center'
+                                    #     pos_hint: {'center_x':0.18, 'center_y':0.25}
+                                    # MDLabel:
+                                    #     font_size:14
+                                    #     theme_text_color: "Custom"
+                                    #     text_color: 80/256, 45/256, 142/256, 1
+                                    #     markup: True
+                                    #     text: "[b][i]shourovhstu17@gmail.com[/i][/b]"
+                                    #     halign:'center'
+                                    #     pos_hint: {'center_x':0.62, 'center_y':0.25}
+
+
+            MDNavigationDrawer:
+                id: nav_drawer
+
+                MDBoxLayout:
+                    orientation:'vertical'
+                    spacing: '8dp'
+                    padding: '0dp'
+
+                    FitImage:
+                        id: user_image
+                        source: ""
+                        size_hint_y: 1.2
+                        pos_hint: {"top": 1}
+                    MDLabel:
+                        id: main_name_key
+                        font_style: 'H6'
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        pos_hint:{'center_x':0.56, 'center_y':0.5}
+
+                    MDLabel:
+                        id: username_email
+                        font_style: 'Subtitle1'
+                        size_hint_y: None
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        height: self.texture_size[1]
+                        pos_hint:{'center_x':0.56, 'center_y':0.5}
+
+                    ScrollView:
+                        pos_hint : {"center_x": 0.45, 'center_y':0.45}
+                        MDList:
+                            OneLineIconListItem:
+                                text: 'Profile'
+                                theme_text_color: "Custom"
+                                text_color: 80/256, 45/256, 142/256, 1
+                                on_release: 
+                                    app.go_to_profile()
+                                    nav_drawer.set_state("dismiss")
+                                IconLeftWidget:
+                                    icon:'account-circle-outline'
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                            OneLineIconListItem:
+                                id: control_panel
+                                text: 'Message' 
+                                theme_text_color: "Custom"
+                                text_color: 80/256, 45/256, 142/256, 1
+                                on_release: 
+                                    app.goto_message_control()
+                                    nav_drawer.set_state("dismiss")
+                                IconLeftWidget:
+                                    id:control_msg
+                                    icon:'chat'
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                
+                            OneLineIconListItem:
+                                text: 'Settings'
+                                theme_text_color: "Custom"
+                                text_color: 80/256, 45/256, 142/256, 1
+                                on_release:
+                                    app.go_to_settings()
+                                    nav_drawer.set_state("dismiss")
+                                    root.manager.transition.direction = 'right'
+                                IconLeftWidget:
+                                    icon:'brightness-5'
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                
+                            OneLineIconListItem:
+                                text: 'Log out'
+                                theme_text_color: "Custom"
+                                text_color: 80/256, 45/256, 142/256, 1
+                                on_release: 
+                                    app.logout_fun()
+                                    nav_drawer.set_state("dismiss")
+                                    
+                                IconLeftWidget:
+                                    icon:'logout'
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                            OneLineIconListItem:
+                                text: 'Exit'
+                                theme_text_color: "Custom"
+                                text_color: 80/256, 45/256, 142/256, 1
+                                on_release: 
+                                    app.stop()
+                                    nav_drawer.set_state("dismiss")
+                                IconLeftWidget:
+                                    icon:'location-exit'
+                                    theme_text_color: "Custom"
+                                    text_color: 80/256, 45/256, 142/256, 1
+                                    
+<User_messenger>:
+    name:'user_message'
+    MDScreen:
+        MDToolbar:
+            id:messager_to
+            title: 'To Admin'
+            pos_hint:{'top':1}
+            elevation: 13
+            left_action_items : [["arrow-left",lambda x:  app.back_from_messenger()]]
+            right_action_items : [["rotate-3d-variant", lambda x: app.refresh_messages()],["dots-vertical", lambda x: app.messanger_options()]]
+        ScrollView:
+            pos_hint:{'top':0.89}
+            size_hint_y:0.8
+            MDList:
+                id: container
+        MDIconButton:
+            icon:'attachment'
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.07, 'center_y':0.050}
+        MDIconButton:
+            icon:'microphone'
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.16, 'center_y':0.050}
+
+        MDTextFieldRound:
+            id:message_new
+            icon_right: 'sticker-emoji'
+            hint_text: 'message'
+            normal_color: app.theme_cls.bg_dark
+            pos_hint:{'center_x':0.53, 'center_y':0.050} 
+            size_hint_x:0.56
+            font_size:16
+        MDIconButton:
+            icon: "send"
+            user_font_size: "30sp"
+            pos_hint: {'center_x':0.925, 'center_y':0.0508}
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            font_size:13
+            on_release: app.send_msg__all()
+
+<ProfileScreen>:
+    name: 'profile'
+    MDScreen:
+        MDToolbar:
+            pos_hint:{'top':1}
+            id:commontoolbar2
+            title:'Profile'
+            left_action_items : [["arrow-left",lambda x:  app.go_to_home()]]
+            right_action_items : [["magnify"],["dots-vertical", lambda x: app.menu_2.open()]]
+            elevation:10
+            
+        # FitImage:
+        #     id: profile_picture
+        #     source: ""
+        #     size_hint: 0.31,0.18
+        #     pos_hint: {'center_x':0.5, 'center_y':0.78}
+        #     radius: [26, 26, 26,26, ]
+        PictureFloatLayout:
+            id: profile_picture
+            canvas:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                Ellipse:
+                    pos: 90, 360
+                    size: 170 , 180
+                    source: self.source
+                    angle_start: 0
+                    angle_end: 360
+        MDLabel:
+            id: profile_name
+            font_size:19
+            size_hint_y: None
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARLRDBD.TTF'
+            halign:'center'
+            pos_hint:{'center_x':0.5, 'center_y':0.55}
+
+        # MDIconButton:
+        #     icon:'facebook' 
+        #     theme_text_color: "Custom"
+        #     text_color: 61/256, 79/256, 239/256, 1
+        #     on_release: app.see_facebook_web()
+        #     pos_hint:{'center_x':0.25, 'center_y':0.47}
+        # MDLabel:
+        #     text:"Facebook"
+        #     halign:'center'
+        #     theme_text_color: "Custom"
+        #     text_color: 80/256, 45/256, 142/256, 1
+        #     pos_hint:{'center_x':0.25, 'center_y':0.43} 
+
+        # MDIconButton:
+        #     icon:'github'
+        #     on_release: app.see_github_web()
+        #     pos_hint:{'center_x':0.5, 'center_y':0.47} 
+        # MDLabel:
+        #     text:"Github"
+        #     halign:'center'
+        #     theme_text_color: "Custom"
+        #     text_color: 80/256, 45/256, 142/256, 1
+        #     pos_hint:{'center_x':0.5, 'center_y':0.43} 
+
+        # MDIconButton:
+        #     icon:'linkedin' 
+        #     theme_text_color: "Custom"
+        #     text_color: 69/256, 146/256, 231/256, 1
+        #     on_release: app.see_facebook_web()
+        #     pos_hint:{'center_x':0.75, 'center_y':0.47} 
+        # MDLabel:
+        #     text:"Linkedin"
+        #     halign:'center'
+        #     theme_text_color: "Custom"
+        #     text_color: 80/256, 45/256, 142/256, 1
+        #     pos_hint:{'center_x':0.75, 'center_y':0.43}  
+
+        MDIconButton:
+            icon:'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/facebook.png'
+            on_release: app.see_facebook_web()
+            pos_hint:{'center_x':0.25, 'center_y':0.46}
+        MDIconButton:
+            icon:'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/github.png'
+            on_release: app.see_github_web()
+            pos_hint:{'center_x':0.5, 'center_y':0.46}
+        MDIconButton:
+            icon:'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/linkedin.png'
+            on_release: app.see_facebook_web()
+            pos_hint:{'center_x':0.75, 'center_y':0.46}
+
+        ScrollView:
+            pos_hint : {"center_x": 0.52, 'center_y':0.27}
+            size_hint_y:0.3
+            MDList:
+                id: profile_list_md
+                OneLineIconListItem:
+                    theme_text_color: "Custom"
+                    text_color: 80/256, 45/256, 142/256, 1
+                    id:profile_name_2
+                    IconLeftWidget:
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        icon:'account'
+                OneLineIconListItem:
+                    theme_text_color: "Custom"
+                    text_color: 80/256, 45/256, 142/256, 1
+                    id:profile_email_2
+                    IconLeftWidget:
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        icon:'email'
+                OneLineIconListItem:
+                    theme_text_color: "Custom"
+                    text_color: 80/256, 45/256, 142/256, 1
+                    id:profile_dob_2
+                    IconLeftWidget:
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        icon:'cake-variant'
+                OneLineIconListItem:
+                    theme_text_color: "Custom"
+                    text_color: 80/256, 45/256, 142/256, 1
+                    id:profile_status_2
+                    IconLeftWidget:
+                        theme_text_color: "Custom"
+                        text_color: 80/256, 45/256, 142/256, 1
+                        icon:'head-cog'
+                # OneLineAvatarIconListItem:
+                #     id:profile_facebook_2
+                #     text:'Go to:               Facebook'
+                #     on_release: app.see_facebook_web()
+                #     IconLeftWidget:
+                #         icon:'facebook'
+                    # ImageRightWidget:
+                    #     source:"D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/facebook.png"
+                    
+                # OneLineAvatarIconListItem:
+                #     id:profile_github_2
+                #     text:'Go to:               Github'
+                #     on_release:app.see_github_web()
+                #     IconLeftWidget:
+                #         icon:'github'
+                    # ImageRightWidget:
+                    #     source:"D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/github.png"
+                
+        MDToolbar:
+            title: "Help"
+            pos_hint: {'bottom': 1}
+            left_action_items: [["coffee"]]
+
+<Settings_screen>:
+    name: 'settings_scr'
+    Screen:
+        MDToolbar:
+            pos_hint:{'top':1}
+            title:'Settings'
+            left_action_items : [["arrow-left",lambda x:  app.go_to_home()]]
+            right_action_items : [["magnify"],["dots-vertical"]]
+            elevation:10
+        FitImage:
+            id:setting_img
+            size_hint: 0.31,0.18
+            pos_hint: {'center_x':0.5, 'center_y':0.78}
+            radius: [26, 26, 26,26, ]
+
+        MDTextField:
+            normal_color: app.theme_cls.primary_light
+            readonly: True 
+            hint_text:'Chosse your image file'
+            size_hint: 0.58, None
+            height: "30dp"
+            pos_hint:{'center_x':0.352,  'center_y':0.65}
+
+        MDRectangleFlatButton:
+            text:'Choose'
+            font_size:14
+            size_hint_y:0.04
+            halign: "center"
+            pos_hint:{'center_x':0.81, 'center_y':0.65}
+            on_release: app.file_manager_open()
+
+        BoxLayout:
+            size_hint: 1,0.48
+            pos_hint:{'top':0.6}
+            orientation: 'vertical'
+            ScrollView:
+                pos_hint:{'bottom':1}
+                GridLayout:
+                    size_hint: 1,None
+                    height: self.minimum_height
+                    cols: 2
+                    rows: 12               
+                    MDLabel:
+                        text: 'Name: '
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextField:
+                        id:setting_name
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        size_hint: 0.9, None
+                        pos_hint_y:1
+                    MDLabel:
+                        text: 'Email: '
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextField:
+                        id:setting_email
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        size_hint: 0.9, None
+                        pos_hint_y:1
+                    MDLabel:
+                        text: 'Birth date:'
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextField:
+                        id:setting_dob
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        size_hint: 0.9, None
+                        pos_hint_y:1
+                    MDLabel:
+                        text: 'Password: '
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextField:
+                        id:setting_pass
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        hint_text:'***********'
+                        size_hint: 0.9, None
+                        pos_hint_y:1
+                    MDLabel:
+                        text: 'Facebook: '
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextFieldRect:
+                        id:setting_face
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        
+                        size_hint: 0.3, 0.2
+                        pos_hint_y:1
+                    MDLabel:
+                        text: 'Github: '
+                        size_hint:1,None 
+                        halign:'center'
+                        size_hint: 0.2, None
+                    MDTextFieldRect:
+                        id:setting_git
+                        padding:'5dp'
+                        normal_color: app.theme_cls.primary_light
+                        size_hint: 0.3, 0.2
+                        pos_hint_y:1
+
+                    MDLabel:
+                        text: '    '
+                        size_hint:0.6,None
+                        halign:'center'
+                    MDRaisedButton:
+                        text: 'Update'
+                        halign:'center'
+                        font_size:17
+                        
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Help"
+                # icon: "git"
+                type: "bottom"
+                mode:'end'
+                left_action_items: [["coffee"]]
+
+<Admin_control>:
+    name: 'admin_control'
+    Screen:
+        BoxLayout:
+            orientation:'vertical'
+            MDToolbar:
+                id: admin_control_menu
+                title: "Admin panel"
+                elevation: 36
+                left_action_items : [["arrow-left",lambda x:  app.go_to_home()]]
+                right_action_items : [["rotate-3d-variant", lambda x: app.admin_message_show()],["dots-vertical",lambda x: app.menu_5.open()]]
+
+            MDBottomNavigation:
+                MDBottomNavigationItem:
+                    name: 'screen 1'
+                    icon: 'information-outline'
+                    FloatLayout:
+                        MDLabel:
+                            text: "Disease information"
+                            font_size:17
+                            theme_text_color: "Custom"
+                            text_color: 80/256, 45/256, 142/256, 1
+                            halign: "center"
+                            pos_hint:{'center_x':0.5,'center_y':0.97}
+
+                        MDBoxLayout:
+                            id:disease_info_layout
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.15,'center_y':0.08}
+                            text:'Add new'
+                            halign:'center'
+                            on_release: app.go_to_add_new_dis()
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.5,'center_y':0.08}
+                            text:'Show'
+                            halign:'center'
+                            on_release: app.go_to_show_dis()
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.85,'center_y':0.08}
+                            text:'Delete'
+                            halign:'center'
+                            on_release:app.disease_info_del()
+
+                MDBottomNavigationItem:
+                    name: 'screen 2'
+                    icon: 'account-group'
+
+                    FloatLayout:
+                        MDLabel:
+                            text: "Basic users"
+                            font_size:17
+                            theme_text_color: "Custom"
+                            text_color: 80/256, 45/256, 142/256, 1
+                            halign: "center"
+                            pos_hint:{'center_x':0.5,'center_y':0.97}
+
+                        MDBoxLayout:
+                            id:user_info_layout
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.18,'center_y':0.08}
+                            text:'Make admin'
+                            halign:'center'
+                            on_release: app.make_user_to_admin()
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.5,'center_y':0.08}
+                            text:'Message'
+                            halign:'center'
+                            on_release: app.go_to_messenger_from_admin()
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.82,'center_y':0.08}
+                            text:'View profile'
+                            halign:'center'
+                            on_release: app.go_to_profile_from_admin()
+
+
+                MDBottomNavigationItem:
+                    name: 'screen 3'
+                    icon: 'account-multiple-check'
+
+                    FloatLayout:
+                        MDLabel:
+                            text: "Sub-admins"
+                            font_size:17
+                            theme_text_color: "Custom"
+                            text_color: 80/256, 45/256, 142/256, 1
+                            halign: "center"
+                            pos_hint:{'center_x':0.5,'center_y':0.97}
+
+                        MDBoxLayout:
+                            id:subadmin_info_layout
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.23,'center_y':0.08}
+                            text:'Remove admin'
+                            halign:'center'
+                            on_release: app.remove_subadmin_98()
+
+                        MDFillRoundFlatButton:
+                            pos_hint:{'center_x':0.80,'center_y':0.08}
+                            text:'View profile'
+                            halign:'center'
+                            on_release: app.go_to_profile_from_admin2()
+                            
+                MDBottomNavigationItem:
+                    name: 'screen 4'
+                    icon: 'facebook-messenger'
+
+                    ScrollView:
+                        MDList:
+                            id: message_list
+
+                        
+<ADD_show_diease>:
+    name: 'Add_show_diease' 
+    MDScreen:
+        MDToolbar:
+            title:'Mini Agriculturist'
+            pos_hint:{'top':1}
+            left_action_items : [["arrow-left",lambda x:  app.back_from_messenger()]]
+            right_action_items : [["magnify"],["dots-vertical", lambda x: app.option_fun()]]
+            elevation:15
+
+        ScrollView:
+            size_hint_y:0.75
+            pos_hint: {"center_x": .5, "center_y": .485}
+            MDBoxLayout:
+                orientation:'vertical'
+                size_hint_y:1.7
+                spacing:dp(40)
+                FloatLayout:
+                    # size_hint: 1,1
+                    pos_hint: {'top':0.99}
+                    MDLabel:
+                        font_style: "H5"
+                        theme_text_color: "Custom"
+                        text_color: 63/256, 36/256, 113/256, 1
+                        text: "Disease information"
+                        halign: 'center'
+                        pos_hint: {'center_x':0.5, 'center_y':0.96}
+
+                    MDTextField:
+                        hint_text: "Category"
+                        mode: "rectangle"
+                        id: d_category
+                        pos_hint: {'center_x':0.38, 'center_y':0.875}
+                        size_hint_x:0.58
+                        size_hint_y:0.07
+                    MDTextField:
+                        hint_text:'ID'
+                        mode: "rectangle"
+                        id: d_id
+                        size_hint_x:0.13
+                        size_hint_y:0.07
+                        pos_hint:{'center_x':0.85, 'center_y':0.875}
+
+                    MDTextField:
+                        hint_text: "Disease name"
+                        mode: "rectangle"
+                        id: d_disease_name
+                        pos_hint: {'center_x':0.5, 'center_y':0.775}
+                        size_hint_x:0.834
+                        size_hint_y:0.07
+
+                    MDTextField:
+                        hint_text: "Treatment"
+                        mode: "rectangle"
+                        id: d_treatment
+                        pos_hint: {'center_x':0.5, 'center_y':0.60}
+                        size_hint_x:0.834
+                        size_hint_y:0.2
+                        multiline: True
+
+                    MDTextField:
+                        hint_text: "More information"
+                        mode: "rectangle"
+                        id: d_more
+                        pos_hint: {'center_x':0.5, 'center_y':0.35}
+                        size_hint_x:0.834
+                        size_hint_y:0.2
+                        multiline: True
+
+                    MDRaisedButton:
+                        text:'ADD NEW'
+                        halign: "center"
+                        font_size:17
+                        size_hint_x:0.4
+                        size_hint_y:0.05
+                        pos_hint:{'center_x':0.248, 'center_y':0.12}
+                        on_release: app.add_disease_to_database()
+
+                    MDRaisedButton:
+                        text:'UPDATE'
+                        halign: "center"
+                        font_size:17
+                        size_hint_x:0.4
+                        size_hint_y:0.05
+                        pos_hint:{'center_x':0.755, 'center_y':0.12} 
+                        on_release: app.update_disease_to_database()
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Help"
+                # icon: "git"
+                type: "bottom"
+                # mode:'end'
+                left_action_items: [["coffee"]]        
+
+<ForgotPassScreen>:
+    name: 'forgot_pass'
+    Screen:
+        MDToolbar:
+            title:'Mini Agriculturist'
+            pos_hint:{'top':1}
+            left_action_items : [["arrow-left",lambda x:  app.logout_fun()]]
+            right_action_items : [["dots-vertical", lambda x: app.option_fun()]]
+            elevation:10
+                
+        MDLabel:
+            text:'Password Recovery'
+            halign:'center'
+            font_style:'H5'
+            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARLRDBD.TTF'
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.5,  'center_y':0.80}
+        MDLabel:
+            text: "Enter your gmail id here"
+            font_size:17
+            theme_text_color: "Primary"
+            halign: "center"
+            pos_hint:{'center_x':0.5,'center_y':0.69}
+
+        MDTextFieldRound:
+            id: forgot_mail_id
+            hint_text:"xyz@gmail.com"
+            normal_color: app.theme_cls.bg_dark
+            pos_hint:{'center_x':0.5, 'center_y':0.63} 
+            size_hint_x:0.7
+            font_size:16
+        MDLabel:
+            text: "After pressing Next button we will send a 6 character comformation code to this gmail. You have to copy and enter to next page the code"
+            font_size:15
+            theme_text_color: "Secondary"
+            halign: "center"
+            size_hint_x:0.80
+            pos_hint:{'center_x':0.5,'center_y':0.50}
+
+        MDRaisedButton:
+            text:'Next'
+            halign: "center"
+            font_size:17
+            pos_hint:{'center_x':0.50, 'center_y':0.27}
+            on_press: 
+                app.goto_change_pass()
+
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Help"
+                # icon: "git"
+                type: "bottom"
+                mode:'end'
+                left_action_items: [["coffee"]] 
+
+
+<Change_password>:
+    name: 'change_pass'
+    Screen:
+        MDToolbar:
+            title:'Mini Agriculturist'
+            pos_hint:{'top':1}
+            left_action_items : [["arrow-left",lambda x:  app.got_to_recov()]]
+            right_action_items : [["dots-vertical", lambda x: app.option_fun()]]
+            elevation:10
+                
+        MDLabel:
+            text:'Change your password'
+            halign:'center'
+            font_style:'H5'
+            theme_text_color: "Custom"
+            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARLRDBD.TTF'
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.5, 'center_y':0.80}
+
+        MDLabel:
+            text:'Enter conformation code :'
+            halign:'center'
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.5,  'center_y':0.7}
+
+        MDTextFieldRect:
+            id: user_cnmf_code_id
+            size_hint: 0.5, None
+            height: "30dp"
+            max_text_length: 6
+            font_size:15
+            hint_text: 'Enter 6 digit code'
+            pos_hint:{'center_x':0.5,  'center_y':0.65}
+
+        MDLabel:
+            text: "Enter new password"
+            font_size:16
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            halign: "center"
+            pos_hint:{'center_x':0.30,'center_y':0.55}
+
+        MDTextFieldRound:
+            id: new_password
+            hint_text:"*************"
+            normal_color: app.theme_cls.bg_dark
+            pos_hint:{'center_x':0.45, 'center_y':0.49} 
+            size_hint_x:0.65
+            font_size:16
+
+        MDLabel:
+            text: "Enter conform password"
+            font_size:16
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            halign: "center"
+            pos_hint:{'center_x':0.34,'center_y':0.40}
+
+        MDTextFieldRound:
+            id: new_password_2
+            hint_text:"*************"
+            normal_color: app.theme_cls.bg_dark
+            pos_hint:{'center_x':0.45, 'center_y':0.34} 
+            size_hint_x:0.65
+            font_size:16
+
+        MDRaisedButton:
+            text:'Change'
+            halign: "center"
+            font_size:17
+            pos_hint:{'center_x':0.50, 'center_y':0.21}
+            on_press: 
+                app.password_change_fun()
+
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Help"
+                # icon: "git"
+                type: "bottom"
+                # mode:'end'
+                left_action_items: [["coffee"]] 
+
+<AcctiveACountScreen>:
+    name: 'active_account'
+    Screen:
+        MDToolbar:
+            title:'Mini Agriculturist'
+            pos_hint:{'top':1}
+            left_action_items : [["arrow-left",lambda x:  app.logout_fun()]]
+            right_action_items : [["dots-vertical", lambda x: app.option_fun()]]
+            elevation:10
+
+        MDLabel:
+            text:'Account Activation'
+            halign:'center'
+            font_style:'H5'
+            theme_text_color: "Custom"
+            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/ARLRDBD.TTF'
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.5,  'center_y':0.80}
+
+        MDLabel:
+            text:'To activate your account type 6 digit code :'
+            halign:'center'
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            pos_hint:{'center_x':0.5,  'center_y':0.66}
+
+        MDTextFieldRect:
+            id: six_digit_code
+            size_hint: 0.8, None
+            height: "50dp"
+            max_text_length: 6
+            font_size:26
+            hint_text: 'Enter 6 digit code'
+            pos_hint:{'center_x':0.5,  'center_y':0.51}
+        MDRaisedButton:
+            text: "Activate"
+            font_size:17
+            size_hint:(0.8,0.07)
+            pos_hint:{'center_x':0.5,  'center_y':0.40}
+            on_press: app.activate_account_fun()
+
+        MDBottomAppBar:
+            MDToolbar:
+                title: "Help"
+                # icon: "git"
+                type: "bottom"
+                # mode:'end'
+                left_action_items: [["coffee"]] 
+
+<Camera_screen>:
+    name: 'cam_scr'
+    Screen:
+        MDToolbar:
+            title:'Back to home page'
+            pos_hint:{'top':1}
+            left_action_items : [["arrow-left",lambda x:  app.go_to_home()]]
+            right_action_items : [["youtube-studio", lambda x: app.option_fun()]]
+            elevation:10
+        MDLabel:
+            text:"Scanner"
+            font_size:48
+            theme_text_color: "Custom"
+            text_color: 80/256, 45/256, 142/256, 1
+            halign:'center'
+            pos_hint:{'center_x':0.5,  'center_y':0.8}
+            font_name: 'D:/Working_dir/Programming/Python/Mini_Agriculturist-2/Fonts/KE01020T.TTF'
+
+        Image:
+            source:"D:/Working_dir/Programming/Python/Mini_Agriculturist-2/icons/cam_frame.png"
+            pos_hint:{'center_x':0.5,  'center_y':0.5}
+            size_hint:(0.98,1)
+        Image:
+            id:cam_box
+            source:""
+            pos_hint:{'center_x':0.5,  'center_y':0.50}
+            size_hint:(0.88,1)
+
+        MDBottomAppBar:
+            MDToolbar:
+                icon: "camera"
+                type: "bottom"
+                left_action_items : [['aspect-ratio'],["flash-circle"]]
+                right_action_items : [['adjust'],["tune"]]
+                on_action_button: app.save_image()
+
+<IconListItem>
+    IconLeftWidget:
+        icon: root.icon
